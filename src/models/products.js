@@ -1,8 +1,31 @@
 const knex = require('./knex');
+const {SHOW_DELETED} = require('../const');
 
 const Products = {
-    getAll: () => {
-      return knex('products').whereNull('deleted_at');
+    getAll: (query_string) => {
+        const {category, showDeleted} = query_string;
+        const query = knex('products');
+
+        if(showDeleted === SHOW_DELETED.FALSE){
+
+            query.whereNull('deleted_at');
+
+        }else if(showDeleted === SHOW_DELETED.ONLY_DELETED){
+ 
+            query.whereNotNull('deleted_at');
+
+        }else if(showDeleted !== SHOW_DELETED.TRUE){
+
+            query.whereNotNull('deleted_at');
+
+        }
+
+        if(category){
+
+            query.where({category_id: category});
+
+        }
+
     },
     getById: (id)=> {
         return knex('products').where({id}).first();
