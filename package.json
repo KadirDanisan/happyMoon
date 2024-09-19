@@ -1,0 +1,20 @@
+{
+  "name": "happymoon",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon src/app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.0",
+    "knex": "^3.1.0",
+    "nodemon": "^3.1.5",
+    "pg": "^8.13.0"
+  }
+}
